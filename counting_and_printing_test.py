@@ -1,9 +1,3 @@
-"""
-Detta modul innehåller funktioner för att räkna ord och skriva ut de mest
-förekommande orden i en text. Funktionen countWords filtrerar bort stop-ord,
-och printTopMost skriver ut de vanligaste orden snyggt formaterade.
-"""
-
 def countWords(words, stopWords):
     """
     Räknar förekomsten av ord i listan 'words', men ignorerar ord som finns i 'stopWords'.
