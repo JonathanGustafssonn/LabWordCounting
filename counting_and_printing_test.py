@@ -3,9 +3,10 @@ def countWords(words, stopWords):
     Räknar förekomsten av ord i listan 'words', men ignorerar ord som finns i 'stopWords'.
     Returnerar en ordbok {ord: frekvens}.
     """
+    stopWords_content = stopWords.read()
     frequencies = {}
     for word in words:
-        if word in stopWords:
+        if word in stopWords_content:
             continue
         elif word not in frequencies:
             frequencies[word] = 1
@@ -27,7 +28,7 @@ def printTopMost(frequencies, n):
         print(word.ljust(20), str(freq).rjust(5))
 
 
-if __name__ == "__main__":
+'''if __name__ == "__main__":
     """
     Exempeltest: demonstrerar funktionerna med en liten lista av ord.
     """
@@ -38,4 +39,4 @@ if __name__ == "__main__":
     print("Räknade frekvenser:", freqs)
 
     print("\nTopp 3 ord:")
-    printTopMost(freqs, 3)
+    printTopMost(freqs, 3)'''
