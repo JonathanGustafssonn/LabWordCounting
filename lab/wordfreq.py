@@ -1,28 +1,42 @@
 def tokenize(lines):
     '''
     Splits a provided text into a sequence of words(tokens)
+    
+    takes a list of tokens as an arg
+
+    Returns a list of words from provided text
     '''
     words = []
 
     for line in lines:
         start = 0
-
-        while start < len(line):
+        length = len(line)
+        while start < length:
             # Remove any whitespace
-            while line[start].isspace():
+            while start < length and line[start].isspace():
                 start += 1
+            if start >= length:
+                break
 
-            # Check type of character
+            # Handle alphabetical tokens
             if line[start].isalpha():
-                print(line[start], ' is a letter')
+                end = start
+                while end < length and line[end].isalpha():
+                    end += 1
+                words.append(line[start:end].lower())
+                start = end
 
+            #Handle digit tokens
             elif line[start].isdigit():
-                print(line[start], ' is a digit')
+                end = start
+                while end < length and line[end].isdigit():
+                    end += 1
+                words.append(line[start:end])
+                start = end
 
-            elif not line[start].isalnum():
-                print(line[start], ' is a symbol')
-            
-            # Move to next character
-            start += 1
+            #Handle other tokens (single character)
+            else:
+                words.append(line[start])
+                start += 1
 
     return words
