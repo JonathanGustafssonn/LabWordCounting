@@ -1,20 +1,17 @@
+from lab import wordfreq
 import sys
-from counting_and_printing_test import printTopMost
-from counting_and_printing_test import countWords
-from wordfreq import tokenize
-
-inp_file = open(sys.argv[1], encoding="utf-8")
-print(inp_file)
-art_file = open(sys.argv[2], encoding="utf-8")
-print(art_file)
-printAmount = int(sys.argv[3])
 
 def main(inp_file, art_file, printAmount):
-    tokenized_words = tokenize(art_file)
-    art_file.close()
-    count_words = countWords(tokenized_words, inp_file)
-    inp_file.close()
-    printTopMost(count_words, printAmount)
+    #Call everything
+    
+    with open(sys.argv[2], encoding="utf-8") as art_file:
+        tokenized_words = wordfreq.tokenize(art_file)
 
+    with open(sys.argv[1], encoding="utf-8") as inp_file:
+        tokenized_stopWords = wordfreq.tokenize(inp_file)
 
-main(inp_file, art_file, printAmount)
+    count_words = wordfreq.countWords(tokenized_words, tokenized_stopWords)
+    wordfreq.printTopMost(count_words, printAmount)
+
+if __name__=="__main__":
+    main(sys.argv[1], sys.argv[2], int(sys.argv[3]))

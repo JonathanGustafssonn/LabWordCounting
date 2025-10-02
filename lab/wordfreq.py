@@ -40,3 +40,39 @@ def tokenize(lines):
                 start += 1
 
     return words
+
+def countWords(words, stopWords):
+    '''
+    Counts the occurrence of words in the list 'words', but ignores words that are in 'stopWords'.
+    Returns a dictionary {word: frequency}.
+    '''
+
+    frequencies = {}
+
+    for word in words:
+        if word in stopWords:
+            continue
+        elif word not in frequencies:
+            frequencies[word] = 1
+        else:
+            frequencies[word] += 1
+    return frequencies
+
+def printTopMost(frequencies, n):
+    '''
+    Prints the n most frequent words from the dictionary
+    'frequencies'. The words are left-aligned in a column
+    of 20 characters, and the frequencies are right-aligned
+    in a column of 5 characters.
+    '''
+    # First sort by frequency (descending), then alphabetically for stable ordering
+    sorted_items = sorted(frequencies.items(), key=lambda x: (-x[1], x[0]))
+
+    # Only print the first 'n' words
+    for word, freq in sorted_items[:n]:
+        print(word.ljust(20), str(freq).rjust(5))
+
+
+
+
+
