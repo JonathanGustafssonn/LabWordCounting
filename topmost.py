@@ -1,11 +1,11 @@
 from lab import wordfreq
-import urllib
+import urllib.request
 import sys
 
 def main(inp_file, art_file, printAmount):
     #Call everything[2]:
 
-    if "http//" in sys.argv[2] or "https//" in sys.argv[2]:
+    if "http://" in sys.argv[2] or "https://" in sys.argv[2]:
         response = urllib.request.urlopen(sys.argv[2])
         lines = response.read().decode("utf8").splitlines()
         tokenized_words = wordfreq.tokenize(lines)
