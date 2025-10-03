@@ -1,10 +1,10 @@
-from lab import wordfreq
+import wordfreq
 import urllib.request
 import sys
 
 def main(inp_file, art_file, printAmount):
-    #Call everything[2]:
-
+    '''Main executes all functions based on the arguments given'''
+    # Checks if "http://" or "https://" is in the argument given by the user, otherwise it runs normally
     if "http://" in sys.argv[2] or "https://" in sys.argv[2]:
         response = urllib.request.urlopen(sys.argv[2])
         lines = response.read().decode("utf8").splitlines()
