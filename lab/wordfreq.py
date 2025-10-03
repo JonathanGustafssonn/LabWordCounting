@@ -70,7 +70,7 @@ def printTopMost(frequencies, n):
 
     # Only print the first 'n' words
     for word, freq in sorted_items[:n]:
-        print(word.ljust(20), str(freq).rjust(5))
+        print(word.ljust(20) + str(freq).rjust(5))
 
 
 
